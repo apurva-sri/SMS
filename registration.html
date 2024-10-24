@@ -4,12 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration Form</title>
-    <link rel="stylesheet" href="/views/registration.css">
+    <link rel="stylesheet" href="registration.css">
+    <script>
+        function validateForm(){
+            var name = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            var namepattern = /^[A-Za-z]+$/;
+            if(!name.match(namepattern) || name.length<6){
+                alert("Username should contain only letters and at least 6 characters long.");
+                return false;
+            }
+            if(password.length<6){
+                alert("Password should be at least 6 characters long.");
+                return false;
+            }
+            else return true;
+        }
+    </script>
 </head>
 <body>
     <div class="container">
         <h2>Registration Form</h2>
-        <form action="#" method="post">
+        <form action="#" method="post" onsubmit="return validateForm()">
             <div class="form-group">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" required>
